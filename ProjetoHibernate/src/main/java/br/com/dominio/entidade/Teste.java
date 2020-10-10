@@ -2,30 +2,24 @@ package br.com.dominio.entidade;
 
 import java.util.List;
 
+import br.com.dominio.dao.JogosDAO;
+
 public class Teste {
 	
 	public static void main(String[] args) {
 		
-		/*Cliente c1 = new Cliente();
-		c1.setNome("Julio");
-		c1.setCpf("013");
-		c1.setRg("123");
-		Cliente c2 = new Cliente();
-		c2.setNome("Cesar");
-		c2.setCpf("014");
-		c2.setRg("1234");
-		Cliente c3 = new Cliente();
-		c3.setNome("reis");
-		c3.setCpf("015");
-		c3.setRg("12345");*/
+		Jogos j1 = new Jogos();
+		j1.setNomeJogo("teste");
+		j1.setRegistroID("xbox");
+		j1.setVersao("1");
 		
 		
 		
-		/*	ClienteJpaDAO cj = new ClienteJpaDAO();
-
+		JogosDAO j= new JogosDAO();
+		j.salvar(j1);
 		
 
-		
+		/*
 		List<jogo> clientes = cj.listar();
 		
 		

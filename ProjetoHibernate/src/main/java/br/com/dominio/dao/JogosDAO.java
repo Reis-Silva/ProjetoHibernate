@@ -22,17 +22,17 @@ public class JogosDAO {
 			entityManager = entityManagerFactory.createEntityManager();
 		}
 		
-		public void salvar(Jogos jogo) {	
+		public void salvar(Jogos j) {	
 				entityManager.getTransaction().begin();
-				entityManager.merge(jogo);
+				entityManager.merge(j);
 				entityManager.getTransaction().commit();
 				entityManagerFactory.close();
 		}
 		
 		
-		public void remover(Jogos jogo) {
+		public void remover(Jogos j) {
 				entityManager.getTransaction().begin();
-				Query q = entityManager.createNativeQuery("delete cliente from cliente where cpf ="+jogo.getId());
+				Query q = entityManager.createNativeQuery("delete cliente from cliente where cpf ="+j.getId());
 				q.executeUpdate();
 				//cliente = entityManager.find(Cliente.class, cliente.getId());
 				//entityManager.remove(cliente);

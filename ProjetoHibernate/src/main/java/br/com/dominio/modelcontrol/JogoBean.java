@@ -19,6 +19,14 @@ public class JogoBean {
 	@Inject
 	private String inputnJogo;
 	
+	public Jogos getJogo() {
+		return jogo;
+	}
+
+	public void setJ(Jogos jogo) {
+		this.jogo = jogo;
+	}
+
 	@Inject
 	private String inputrID;
 	
@@ -32,13 +40,7 @@ public class JogoBean {
 	private JogosDAO gerenciar;
 	
 
-	public Jogos getJogo() {
-		return jogo;
-	}
-
-	public void setJogo(Jogos jogo) {
-		this.jogo = jogo;
-	}
+	
 
 	public String getInputnJogo() {
 		return inputnJogo;
