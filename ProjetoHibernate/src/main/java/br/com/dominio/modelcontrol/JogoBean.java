@@ -1,6 +1,5 @@
 package br.com.dominio.modelcontrol;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
@@ -15,12 +14,22 @@ import br.com.dominio.entidade.Jogos;
 public class JogoBean {
 	
 	@Inject
-	private Jogos jogo = new Jogos();
+	private Jogos jogo;
 	
-	private List<Jogos> jogos = new ArrayList<Jogos>();
+	@Inject
+	private String inputnJogo;
 	
-	private JogosDAO gerenciar = new JogosDAO();
+	@Inject
+	private String inputrID;
 	
+	@Inject
+	private String inputvSistema;
+	
+	@Inject
+	private List<Jogos> jogos; 
+	
+	@Inject
+	private JogosDAO gerenciar;
 	
 
 	public Jogos getJogo() {
@@ -29,6 +38,30 @@ public class JogoBean {
 
 	public void setJogo(Jogos jogo) {
 		this.jogo = jogo;
+	}
+
+	public String getInputnJogo() {
+		return inputnJogo;
+	}
+
+	public void setInputnJogo(String inputnJogo) {
+		this.inputnJogo = inputnJogo;
+	}
+
+	public String getInputrID() {
+		return inputrID;
+	}
+
+	public void setInputrID(String inputrID) {
+		this.inputrID = inputrID;
+	}
+
+	public String getInputvSistema() {
+		return inputvSistema;
+	}
+
+	public void setInputvSistema(String inputvSistema) {
+		this.inputvSistema = inputvSistema;
 	}
 
 	public List<Jogos> getJogos() {
@@ -46,10 +79,13 @@ public class JogoBean {
 	public void setGerenciar(JogosDAO gerenciar) {
 		this.gerenciar = gerenciar;
 	}
-	
 
 	public void save() {
-		
+		jogo = new Jogos();
+		gerenciar = new JogosDAO();
+		jogo.setNomeJogo(inputnJogo);
+		jogo.setRegistroID(inputrID);
+		jogo.setVersao(inputvSistema);
 		gerenciar.salvar(jogo);
 		
 	}

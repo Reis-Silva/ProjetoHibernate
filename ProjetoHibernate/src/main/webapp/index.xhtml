@@ -17,20 +17,25 @@
 
 <h:body>
 
-	<h1>Cadastro de Jogo de Video Game Geral</h1>
+	<h:form id="form">
+
+		<h1>Cadastro de Jogo de Video Game Geral</h1>
 
 
-	<h:panelGrid columns="2">
+		<h:panelGrid columns="2">
 
-		<h:outputLabel value="Nome do Jogo" />
-		<p:inputText value="#{jogoBean.jogo.nomeJogo}" />
-		<h:outputLabel value="Registro do ID do VideoGame" />
-		<p:inputText value="#{jogoBean.jogo.registroID}" />
-		<h:outputLabel value="Versão do Jogo" />
-		<p:inputText value="#{jogoBean.jogo.versao}" />
+			<h:outputLabel value="Nome do Jogo" />
+			<p:inputText value="#{jogoBean.inputnJogo}" />
+			<h:outputLabel value="Registro do ID do VideoGame" />
+			<p:inputText value="#{jogoBean.inputrID}" />
+			<h:outputLabel value="Versão do Jogo" />
+			<p:inputText value="#{jogoBean.inputvSistema}" />
 
 
-	</h:panelGrid>
-	<p:commandButton value="Cadastrar" action="#{jogoBean.save()}"/>
+		</h:panelGrid>
+		<p:commandButton value="Cadastrar" action="#{jogoBean.save()}"
+			update="form" />
+
+	</h:form>
 </h:body>
 </html>
