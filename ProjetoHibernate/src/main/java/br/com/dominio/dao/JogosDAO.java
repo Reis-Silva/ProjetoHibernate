@@ -17,7 +17,7 @@ public class JogosDAO {
 		
 
 		public JogosDAO() {
-			entityManagerFactory = Persistence.createEntityManagerFactory("projetohibernate");
+			entityManagerFactory = Persistence.createEntityManagerFactory("jogosgenericos");
 			
 			entityManager = entityManagerFactory.createEntityManager();
 		}
