@@ -36,19 +36,31 @@ public class JogosDAO {
 		}
 		
 		
-		public void remover(Jogos j) {
-				
-				
+		public void remover(Jogos jogo) {
 				entityManager.getTransaction().begin();
 				
 				
-				//Query q = entityManager.createNativeQuery("delete jogos from Jogos where id ="+j.getId());
+				//Query q = entityManager.createNativeQuery("delete from jogos where id=2");
 				//q.executeUpdate();
-				j = entityManager.find(Jogos.class, j.getId());
-				entityManager.remove(j);
+				jogo = entityManager.find(Jogos.class, jogo.getId());
+				entityManager.remove(jogo);
 				entityManager.getTransaction().commit();
 				entityManagerFactory.close();
 		}
+		
+		public Jogos getById(final int id) {
+	         return entityManager.find(Jogos.class, id);
+	       }
+		
+		
+		public void removeById(final int id) {
+	         try {
+	            Jogos cliente = getById(id);
+	            remover(cliente);
+	         } catch (Exception ex) {
+	            ex.printStackTrace();
+	         }
+	       }
 		
 		@SuppressWarnings("unchecked")
 		public List<Jogos> listar(){
@@ -57,7 +69,7 @@ public class JogosDAO {
 			Query consulta = entityManager.createQuery("select jogo from Jogos jogo");
 			List<Jogos> lista = consulta.getResultList();
 			entityManager.getTransaction().commit();
-			entityManager.close();
+			
 			
 			return lista;
 		}
