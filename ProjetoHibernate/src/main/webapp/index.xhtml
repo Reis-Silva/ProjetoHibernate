@@ -48,16 +48,15 @@
 			<p:outputLabel value="Versão do Jogo" />
 			<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}" />
 			<br />
-			<p:commandButton value="Cadastrar" action="#{jogoBean.save()}"
-				update="@form" />
+c
 		</h:panelGrid>
 
 		<br />
 		<br />
 
 		<p:dataTable id="tablejogos" value="#{jogoBean.jogos}" var="j"
-			width="800px" style="width: auto;" paginator="true" rows="15"
-			widgetVar="tVirus"
+			selection="#{jogoBean.jogos}" rowKey="#{j.id}" width="800px"
+			style="width: auto;" paginator="true" rows="15" widgetVar="tJogos"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
 			paginatorPosition="bottom" rowsPerPageTemplate="15">
@@ -92,7 +91,18 @@
 				</f:facet>
 				<h:outputLabel value="#{j.versao}" />
 			</p:column>
+			<f:facet name="footer">
+
+			</f:facet>
+			<p:column>
+				<p:commandButton value="Editar" action="#{carroBean.editar(car)}"
+					update="form " />
+									<p:commandButton value="Deletar" action="#{jogoBean.remove()}"
+					/>
+			</p:column>
 		</p:dataTable>
+		<p:commandButton value="Buscar" action="#{jogoBean.buscar()}"
+			update="@form" />
 
 	</h:form>
 </h:body>

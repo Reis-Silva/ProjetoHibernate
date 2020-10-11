@@ -2,9 +2,14 @@ package br.com.dominio.modelcontrol;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 import br.com.dominio.dao.JogosDAO;
 import br.com.dominio.entidade.Jogos;
@@ -81,7 +86,8 @@ public class JogoBean {
 	public void setGerenciar(JogosDAO gerenciar) {
 		this.gerenciar = gerenciar;
 	}
-
+	
+	
 	public void save() {
 		jogo = new Jogos();
 		gerenciar = new JogosDAO();
@@ -96,5 +102,13 @@ public class JogoBean {
 		gerenciar.remover(jogo);
 	}
 	
+	
+	public void buscar() {
+		jogo = new Jogos();
+		gerenciar = new JogosDAO();
+		setJogos(gerenciar.listar());
+	}
+	
+
 
 }
