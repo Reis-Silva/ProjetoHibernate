@@ -14,12 +14,19 @@ public class JogosDAO {
 		protected EntityManagerFactory entityManagerFactory;
 		EntityManager entityManager;
 
-		
-
-		public JogosDAO() {
-			entityManagerFactory = Persistence.createEntityManagerFactory("jogosgenericos");
+		public JogosDAO(){
 			
-			entityManager = entityManagerFactory.createEntityManager();
+			entityManager = getEntityManager();
+		} 
+		
+		public EntityManager getEntityManager() {
+			entityManagerFactory = Persistence.createEntityManagerFactory("jogosgenericos");
+			if (entityManager == null) {
+				entityManager = entityManagerFactory.createEntityManager();
+			}
+				
+			return entityManager;
+
 		}
 		
 		public void salvar(Jogos j) {	
