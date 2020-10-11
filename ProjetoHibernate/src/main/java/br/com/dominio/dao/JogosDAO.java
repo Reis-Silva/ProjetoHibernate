@@ -24,9 +24,7 @@ public class JogosDAO {
 			if (entityManager == null) {
 				entityManager = entityManagerFactory.createEntityManager();
 			}
-				
 			return entityManager;
-
 		}
 		
 		public void salvar(Jogos j) {	

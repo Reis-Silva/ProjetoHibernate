@@ -19,21 +19,80 @@
 
 	<h:form id="form">
 
-		<h1>Cadastro Geral de Jogos de Video Game </h1>
+
+		<div align="center">
+			<h1>Cadastro Geral de Jogos de Video Game</h1>
+			<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
+
+
+		</div>
+
 
 
 		<h:panelGrid id="pg" columns="2">
 
-			<h:outputLabel value="Nome do Jogo" />
+			<p:outputLabel value="Nome do Jogo" />
 			<p:inputText value="#{jogoBean.inputnJogo}" />
-			<h:outputLabel value="Registro do ID do VideoGame" />
-			<p:inputText value="#{jogoBean.inputrID}" />
-			<h:outputLabel value="Versão do Jogo" />
-			<p:inputText value="#{jogoBean.inputvSistema}" />
+			<p:outputLabel value="Console" />
+			<p:selectOneMenu id="console" value="#{jogoBean.inputrID}"
+				style="width:125px">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+				<f:selectItem itemLabel="PS4" itemValue="PS4" />
+				<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				<f:facet name="footer">
+					<p:separator />
+					<h:outputText value="3 consoles" style="font-weight:bold;" />
+				</f:facet>
+			</p:selectOneMenu>
+			<p:outputLabel value="Versão do Jogo" />
+			<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}" />
+			<br />
+			<p:commandButton value="Cadastrar" action="#{jogoBean.save()}"
+				update="@form" />
 		</h:panelGrid>
-					
-					<p:commandButton value="Cadastrar" action="#{jogoBean.save()}"
-			update="@form" />
+
+		<br />
+		<br />
+
+		<p:dataTable id="tablejogos" value="#{jogoBean.jogos}" var="j"
+			width="800px" style="width: auto;" paginator="true" rows="15"
+			widgetVar="tVirus"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+			paginatorPosition="bottom" rowsPerPageTemplate="15">
+
+
+			<p:column sortBy="#{j.id}">
+				<f:facet name="header">
+					<p:outputLabel value="ID" />
+				</f:facet>
+				<h:outputLabel value="#{j.id}" />
+			</p:column>
+
+			<p:column sortBy="#{j.nomeJogo}" filterBy="#{j.nomeJogo}"
+				filterMatchMode="contains">
+				<f:facet name="header">
+					<p:outputLabel value="Jogo" />
+				</f:facet>
+				<h:outputLabel value="#{j.nomeJogo}" />
+			</p:column>
+
+			<p:column sortBy="#{j.registroID}" filterBy="#{j.registroID}"
+				filterMatchMode="contains">
+				<f:facet name="header">
+					<p:outputLabel value="Console" />
+				</f:facet>
+				<h:outputLabel value="#{j.registroID}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<p:outputLabel value="Versão do Jogo" />
+				</f:facet>
+				<h:outputLabel value="#{j.versao}" />
+			</p:column>
+		</p:dataTable>
 
 	</h:form>
 </h:body>
