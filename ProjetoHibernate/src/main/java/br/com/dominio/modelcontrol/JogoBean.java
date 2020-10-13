@@ -28,17 +28,7 @@ public class JogoBean {
 	
 	@Inject
 	private JogosDAO gerenciar;
-	
-	@Inject
-	private int  inputID;
-	
-	public int getInputID() {
-		return inputID;
-	}
 
-	public void setInputID(int inputID) {
-		this.inputID = inputID;
-	}
 
 	public Jogos getJogo() {
 		return jogo;
