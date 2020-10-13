@@ -1,16 +1,9 @@
 package br.com.dominio.modelcontrol;
 
 import java.util.List;
-
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-
-import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
-
 import br.com.dominio.dao.JogosDAO;
 import br.com.dominio.entidade.Jogos;
 
@@ -24,14 +17,6 @@ public class JogoBean {
 	@Inject
 	private String inputnJogo;
 	
-	public Jogos getJogo() {
-		return jogo;
-	}
-
-	public void setJ(Jogos jogo) {
-		this.jogo = jogo;
-	}
-
 	@Inject
 	private String inputrID;
 	
@@ -44,7 +29,24 @@ public class JogoBean {
 	@Inject
 	private JogosDAO gerenciar;
 	
+	@Inject
+	private int  inputID;
+	
+	public int getInputID() {
+		return inputID;
+	}
 
+	public void setInputID(int inputID) {
+		this.inputID = inputID;
+	}
+
+	public Jogos getJogo() {
+		return jogo;
+	}
+
+	public void setJ(Jogos jogo) {
+		this.jogo = jogo;
+	}
 	
 
 	public String getInputnJogo() {
@@ -98,11 +100,11 @@ public class JogoBean {
 		
 	}
 	
-	public void remove() {
-		gerenciar.remover(jogo);
+	public void remove(int id) {
+		gerenciar.removeById(id);
 	}
 	
-	
+
 	public void buscar() {
 		jogo = new Jogos();
 		gerenciar = new JogosDAO();

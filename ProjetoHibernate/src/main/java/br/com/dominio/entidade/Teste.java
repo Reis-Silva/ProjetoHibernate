@@ -16,7 +16,7 @@ public class Teste {
 		
 		
 		JogosDAO j= new JogosDAO();
-		j.removeById(3);
+		j.salvar(j1);
 		
 		
 		

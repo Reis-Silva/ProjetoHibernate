@@ -35,19 +35,7 @@ public class JogosDAO {
 				entityManagerFactory.close();
 		}
 		
-		
-		public void remover(Jogos jogo) {
-				entityManager.getTransaction().begin();
-				
-				
-				//Query q = entityManager.createNativeQuery("delete from jogos where id=2");
-				//q.executeUpdate();
-				jogo = entityManager.find(Jogos.class, jogo.getId());
-				entityManager.remove(jogo);
-				entityManager.getTransaction().commit();
-				entityManagerFactory.close();
-		}
-		
+			
 		public Jogos getById(final int id) {
 	         return entityManager.find(Jogos.class, id);
 	       }
@@ -55,12 +43,21 @@ public class JogosDAO {
 		
 		public void removeById(final int id) {
 	         try {
-	            Jogos cliente = getById(id);
-	            remover(cliente);
+	            Jogos jogo = getById(id);
+	            remover(jogo);
 	         } catch (Exception ex) {
 	            ex.printStackTrace();
 	         }
 	       }
+		
+		
+		public void remover(Jogos jogo) {
+			entityManager.getTransaction().begin();
+			jogo = entityManager.find(Jogos.class, jogo.getId());
+			entityManager.remove(jogo);
+			entityManager.getTransaction().commit();
+			entityManagerFactory.close();
+		}
 		
 		@SuppressWarnings("unchecked")
 		public List<Jogos> listar(){
