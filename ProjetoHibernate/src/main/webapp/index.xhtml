@@ -12,88 +12,21 @@
 	<title>Banco de dados - Hibernate</title>
 </h:head>
 
-
-
-
 <h:body>
+	<div align="center">
+		<h1>Cadastro Geral de Jogos de Video Game</h1>
+		<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
+	</div>
 
-	<h:form id="form">
+	<p:menubar>
+		<p:menuitem value="BANCO DE DADOS" url="paginas/jbdc.xhtml" />
+		<p:menuitem value="CADASTRO" url="paginas/cadastro.xhtml" update="messages"/>
+	</p:menubar>
+
+	<hr />
+
+	<ui:insert></ui:insert>
 
 
-		<div align="center">
-			<h1>Cadastro Geral de Jogos de Video Game</h1>
-			<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
-		</div>
-
-		<h:panelGrid id="pg" columns="2" border="1" rendered="#{carroBean.busca == false}">
-			<f:facet name="header">
-           		Salvar no banco de Dados
-        	</f:facet>
-
-			<p:outputLabel value="Nome do Jogo" />
-			<p:inputText value="#{jogoBean.inputnJogo}" />
-			<p:outputLabel value="Console" />
-			<p:selectOneMenu id="console" value="#{jogoBean.inputrID}"
-				style="width:125px">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-				<f:selectItem itemLabel="PS4" itemValue="PS4" />
-				<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-				<f:facet name="footer">
-					<p:separator />
-					<h:outputText value="3 consoles" style="font-weight:bold;" />
-				</f:facet>
-			</p:selectOneMenu>
-			<p:outputLabel value="Versão do Jogo" />
-			<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}" />
-				
-			<f:facet name="footer">
-				<p:commandButton value="Salvar" action="#{jogoBean.save()}" update="@form" disabled="#{carroBean.busca == true}"/>
-			</f:facet>
-		</h:panelGrid>
-
-		<br />
-			
-		<p:dataTable id="tablejogos"  value="#{jogoBean.jogos}" var="j" 
-			 width="800px"
-			style="width: auto;" paginator="true" rows="15" widgetVar="tJogos"
-			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-			paginatorPosition="bottom" rowsPerPageTemplate="15" rendered="#{jogoBean.buscar() == true}" >
-			
-	 	<f:facet name="header">
-           Tabela de Jogos
-        </f:facet>
-			
-			<p:column headerText="Id">
-				<h:outputLabel value="#{j.id}" />
-			</p:column>
-
-			<p:column sortBy="#{j.nomeJogo}" headerText="Nome do Jogo" filterBy="#{v.state}"
-							filterMatchMode="contains">
-				<h:outputLabel value="#{j.nomeJogo}" />
-			</p:column>
-
-			<p:column sortBy="#{j.registroID}" headerText="Console">
-				<h:outputLabel value="#{j.registroID}" />
-			</p:column>
-
-			<p:column headerText= "Versão">
-				<h:outputLabel value="#{j.versao}" />
-			</p:column>
-			
-			<p:column>
-				<p:commandButton value="Deletar"  actionListener="#{jogoBean.remove(j.id)}" process="tablejogos" update="form "/>
-				<p:commandButton value="Editar"  actionListener="#{jogoBean.editar(j.id)}" process="tablejogos" update="form "/>		
-			</p:column>
-			
-			<f:facet name="footer">
-				<p:commandButton value="Buscar" action="#{jogoBean.buscar()}" update="@form" />
-				<p:commandButton value="Cadastro"  update="@form tablejogos" />
-			</f:facet>
-		</p:dataTable>
-		
-		
-	</h:form>
 </h:body>
 </html>

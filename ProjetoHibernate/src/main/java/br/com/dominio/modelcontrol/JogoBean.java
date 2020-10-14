@@ -1,13 +1,15 @@
 package br.com.dominio.modelcontrol;
 
 import java.util.List;
-import javax.faces.bean.ApplicationScoped;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import br.com.dominio.dao.JogosDAO;
 import br.com.dominio.entidade.Jogos;
 
-@ApplicationScoped
+@ViewScoped
 @ManagedBean
 public class JogoBean {
 	
@@ -94,7 +96,7 @@ public class JogoBean {
 		gerenciar.removeById(id);
 	}
 	
-
+	
 	public void buscar() {
 		jogo = new Jogos();
 		gerenciar = new JogosDAO();
@@ -104,6 +106,14 @@ public class JogoBean {
 	public void editar(int id) {
 		
 		gerenciar.atualizar(id, inputnJogo, inputrID, inputvSistema);
+		
+	}
+	
+	
+	@PostConstruct
+	public void init() {
+		
+		buscar();
 		
 	}
 

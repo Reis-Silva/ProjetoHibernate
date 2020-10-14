@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/index.xhtml">
+
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Banco de dados - Hibernate</title>
+	</h:head>
+
+	<br />
+	<h:form id="form">
+
+		<p:fieldset>
+
+			<h:panelGrid id="pg" columns="2" border="1" layout="flex">
+				<f:facet name="header">
+           		Salvar no banco de Dados
+        	</f:facet>
+
+				<p:outputLabel value="Nome do Jogo" />
+				<p:inputText value="#{jogoBean.inputnJogo}" />
+				<p:outputLabel value="Console" />
+				<p:selectOneMenu id="console" value="#{jogoBean.inputrID}"
+					style="width:125px">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+					<f:facet name="footer">
+						<p:separator />
+						<h:outputText value="3 consoles" style="font-weight:bold;" />
+					</f:facet>
+				</p:selectOneMenu>
+				<p:outputLabel value="Versão do Jogo" />
+				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}" />
+
+				<f:facet name="footer">
+					<p:commandButton value="Salvar" action="#{jogoBean.save()}"
+						update="@form" disabled="#{carroBean.busca == true}" />
+					<p:commandButton>
+
+						<p:menuitem value="Cadastro de Jogos" url="jbdc.xhtml" />
+					</p:commandButton>
+				</f:facet>
+			</h:panelGrid>
+		</p:fieldset>
+
+	</h:form>
+
+</ui:decorate>

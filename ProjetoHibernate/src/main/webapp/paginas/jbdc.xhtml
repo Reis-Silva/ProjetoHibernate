@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/index.xhtml">
+
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Banco de dados - Hibernate</title>
+	</h:head>
+
+	<h:form id="form">
+
+		<p:fieldset>
+
+
+			<p:dataTable id="tablejogos" value="#{jogoBean.jogos}" var="j"
+				border="1" width="800px" style="width: auto;" paginator="true"
+				rows="15" widgetVar="tJogos"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+				paginatorPosition="bottom" rowsPerPageTemplate="15">
+
+				<f:facet name="header">
+           Tabela de Jogos
+        </f:facet>
+
+				<p:column headerText="Id">
+					<h:outputLabel value="#{j.id}" />
+				</p:column>
+
+				<p:column sortBy="#{j.nomeJogo}" headerText="Nome do Jogo"
+					filterBy="#{v.state}" filterMatchMode="contains">
+					<h:outputLabel value="#{j.nomeJogo}" />
+				</p:column>
+
+				<p:column sortBy="#{j.registroID}" headerText="Console">
+					<h:outputLabel value="#{j.registroID}" />
+				</p:column>
+
+				<p:column headerText="Versão">
+					<h:outputLabel value="#{j.versao}" />
+				</p:column>
+
+				<p:column>
+					<p:commandButton value="Deletar"
+						actionListener="#{jogoBean.remove(j.id)}" process="tablejogos"
+						update="form " />
+					<p:commandButton value="Editar"
+						actionListener="#{jogoBean.editar(j.id)}" process="tablejogos"
+						update="form " />
+				</p:column>
+
+				<f:facet name="footer">
+					<p:commandButton value="Buscar" action="#{jogoBean.buscar()}"
+						update="@form" />
+					<p:menuitem value="Novo" url="/paginas/cadastro.xhtml" />
+
+				</f:facet>
+			</p:dataTable>
+
+		</p:fieldset>
+
+	</h:form>
+
+</ui:decorate>
