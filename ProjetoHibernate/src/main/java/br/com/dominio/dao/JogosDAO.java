@@ -43,18 +43,19 @@ public class JogosDAO {
 		
 		public void removeById(final int id) {
 	         try {
-	            Jogos jogo = getById(id);
-	            remover(jogo);
+	        	 Jogos j = new Jogos();
+	             j = getById(id);
+	            remover(j);
 	         } catch (Exception ex) {
 	            ex.printStackTrace();
 	         }
 	       }
 		
 		
-		public void remover(Jogos jogo) {
+		public void remover(Jogos j) {
 			entityManager.getTransaction().begin();
-			jogo = entityManager.find(Jogos.class, jogo.getId());
-			entityManager.remove(jogo);
+			j = entityManager.find(Jogos.class, j.getId());
+			entityManager.remove(j);
 			entityManager.getTransaction().commit();
 			entityManagerFactory.close();
 		}

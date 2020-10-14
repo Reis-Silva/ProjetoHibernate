@@ -23,13 +23,12 @@
 		<div align="center">
 			<h1>Cadastro Geral de Jogos de Video Game</h1>
 			<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
-
-
 		</div>
 
-
-
-		<h:panelGrid id="pg" columns="2">
+		<h:panelGrid id="pg" columns="2" border="1">
+			<f:facet name="header">
+           		Salvar no banco de Dados
+        	</f:facet>
 
 			<p:outputLabel value="Nome do Jogo" />
 			<p:inputText value="#{jogoBean.inputnJogo}" />
@@ -47,62 +46,52 @@
 			</p:selectOneMenu>
 			<p:outputLabel value="Versão do Jogo" />
 			<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}" />
-			<br />
-c
+				
+			<f:facet name="footer">
+				<p:commandButton value="Salvar" action="#{jogoBean.save()}" update="@form" />
+			</f:facet>
 		</h:panelGrid>
 
 		<br />
-		<br />
-
-		<p:dataTable id="tablejogos" value="#{jogoBean.jogos}" var="j"
-			selection="#{jogoBean.jogos}" rowKey="#{j.id}" width="800px"
+			
+		<p:dataTable id="tablejogos"  value="#{jogoBean.jogos}" var="j"
+			 width="800px"
 			style="width: auto;" paginator="true" rows="15" widgetVar="tJogos"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
 			paginatorPosition="bottom" rowsPerPageTemplate="15">
-
-
-			<p:column sortBy="#{j.id}">
-				<f:facet name="header">
-					<p:outputLabel value="ID" />
-				</f:facet>
+			
+	 	<f:facet name="header">
+           Tabela de Jogos
+        </f:facet>
+			
+			<p:column headerText="Id">
 				<h:outputLabel value="#{j.id}" />
 			</p:column>
 
-			<p:column sortBy="#{j.nomeJogo}" filterBy="#{j.nomeJogo}"
-				filterMatchMode="contains">
-				<f:facet name="header">
-					<p:outputLabel value="Jogo" />
-				</f:facet>
+			<p:column sortBy="#{j.nomeJogo}" headerText="Nome do Jogo" filterBy="#{v.state}"
+							filterMatchMode="contains">
 				<h:outputLabel value="#{j.nomeJogo}" />
 			</p:column>
 
-			<p:column sortBy="#{j.registroID}" filterBy="#{j.registroID}"
-				filterMatchMode="contains">
-				<f:facet name="header">
-					<p:outputLabel value="Console" />
-				</f:facet>
+			<p:column sortBy="#{j.registroID}" headerText="Console">
 				<h:outputLabel value="#{j.registroID}" />
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">
-					<p:outputLabel value="Versão do Jogo" />
-				</f:facet>
+			<p:column headerText= "Versão">
 				<h:outputLabel value="#{j.versao}" />
 			</p:column>
-			<f:facet name="footer">
-
-			</f:facet>
+			
 			<p:column>
-				<p:commandButton value="Editar" action="#{carroBean.editar(car)}"
-					update="form " />
-				<p:commandButton value="Deletar" action=" #{jogoBean.remove(j.id)}" />
+			<p:commandButton value="Deletar"  actionListener="#{jogoBean.remove(j.id)}" process="tablejogos" />	
 			</p:column>
+			
+			<f:facet name="footer">
+				<p:commandButton value="Buscar" action="#{jogoBean.buscar()}" update="@form" />
+			</f:facet>
 		</p:dataTable>
-		<p:commandButton value="Buscar" action="#{jogoBean.buscar()}"
-			update="@form" />
-
+		
+		
 	</h:form>
 </h:body>
 </html>

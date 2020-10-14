@@ -1,5 +1,7 @@
 package br.com.dominio.entidade;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "jogos")
-public class Jogos {
+public class Jogos implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
+	public Jogos() {}
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
