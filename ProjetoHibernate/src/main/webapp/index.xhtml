@@ -25,7 +25,7 @@
 			<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
 		</div>
 
-		<h:panelGrid id="pg" columns="2" border="1">
+		<h:panelGrid id="pg" columns="2" border="1" rendered="#{carroBean.busca == false}">
 			<f:facet name="header">
            		Salvar no banco de Dados
         	</f:facet>
@@ -48,18 +48,18 @@
 			<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}" />
 				
 			<f:facet name="footer">
-				<p:commandButton value="Salvar" action="#{jogoBean.save()}" update="@form" />
+				<p:commandButton value="Salvar" action="#{jogoBean.save()}" update="@form" disabled="#{carroBean.busca == true}"/>
 			</f:facet>
 		</h:panelGrid>
 
 		<br />
 			
-		<p:dataTable id="tablejogos"  value="#{jogoBean.jogos}" var="j"
+		<p:dataTable id="tablejogos"  value="#{jogoBean.jogos}" var="j" 
 			 width="800px"
 			style="width: auto;" paginator="true" rows="15" widgetVar="tJogos"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-			paginatorPosition="bottom" rowsPerPageTemplate="15">
+			paginatorPosition="bottom" rowsPerPageTemplate="15" rendered="#{jogoBean.buscar() == true}" >
 			
 	 	<f:facet name="header">
            Tabela de Jogos
@@ -83,11 +83,13 @@
 			</p:column>
 			
 			<p:column>
-			<p:commandButton value="Deletar"  actionListener="#{jogoBean.remove(j.id)}" process="tablejogos" />	
+				<p:commandButton value="Deletar"  actionListener="#{jogoBean.remove(j.id)}" process="tablejogos" update="form "/>
+				<p:commandButton value="Editar"  actionListener="#{jogoBean.editar(j.id)}" process="tablejogos" update="form "/>		
 			</p:column>
 			
 			<f:facet name="footer">
 				<p:commandButton value="Buscar" action="#{jogoBean.buscar()}" update="@form" />
+				<p:commandButton value="Cadastro"  update="@form tablejogos" />
 			</f:facet>
 		</p:dataTable>
 		

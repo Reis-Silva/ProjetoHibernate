@@ -71,6 +71,19 @@ public class JogosDAO {
 			
 			return lista;
 		}
+		
+		
+		public void atualizar(final int id, String inputnJogo, String inputrID, String inputvSistema) {
+			
+			Jogos jogo = entityManager.find(Jogos.class, id);
+			entityManager.getTransaction().begin();
+			jogo.setNomeJogo(inputnJogo);
+			jogo.setRegistroID(inputrID);
+			jogo.setVersao(inputvSistema);
+			entityManager.getTransaction().commit();
+			
+			
+		}
 	
 
 }

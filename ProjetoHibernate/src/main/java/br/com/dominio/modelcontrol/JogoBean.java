@@ -101,6 +101,11 @@ public class JogoBean {
 		setJogos(gerenciar.listar());
 	}
 	
+	public void editar(int id) {
+		
+		gerenciar.atualizar(id, inputnJogo, inputrID, inputvSistema);
+		
+	}
 
 
 }
