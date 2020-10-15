@@ -19,31 +19,36 @@
 		<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
 	</div>
 
-	<p:menubar>
-		<p:menuitem value="BANCO DE DADOS" url="jbdc.xhtml" />
-		<p:menuitem value="CADASTRO" url="cadastro.xhtml" />
-	</p:menubar>
-
 	<br />
 	
 	<p:messages autoUpdate="true" id="msg"/>
 	
 	<h:form id="form">
 		
-
+		<f:metadata>
+			<f:viewParam name="parametro" value="#{jogoBean.jogo.id}"/>
+			<f:viewParam name="parametro" value="#{jogoBean.jogo.nomeJogo}"/>
+		</f:metadata>
+		
+		<h1>#{jogoBean.jogo.id}</h1>
+		<h1>#{jogoBean.jogo.nomeJogo}</h1>
+		
 		<p:fieldset>
-
+			
 			<h:panelGrid id="pg" columns="3" border="1" layout="flex">
 				<f:facet name="header">
-           		Salvar no banco de Dados
+           		Atualizar no banco de Dados
         	</f:facet>
-
-				<p:outputLabel value="Nome do Jogo" for="nj" />
+				<p:outputLabel value="Nome atual do Jogo"/>
+				<p:outputLabel value="Nome para substituição"/>
+				<p:outputLabel value="Mensagem"/>
+				
+				<p:outputLabel value="#{jogoBean.jogoAtualizar.get(0).id}" for="nj" />
 				<p:inputText id="nj" required="true" requiredMessage="O nome é obrigatório" 
 				value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui" disabled="false"/>
 				<p:message for="nj" />
 
-				<p:outputLabel for="console" value="Console:" />
+				<p:outputLabel for="console" value="#{jogoBean.jogo.registroID}" />
 				<p:selectOneRadio id="console" value="#{jogoBean.inputrID}"
 					unselectable="true" required="true">
 					<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
@@ -52,13 +57,13 @@
 				</p:selectOneRadio>
 				<p:message for="console" />
 
-				<p:outputLabel value="Versão do Jogo" for="input1" />
+				<p:outputLabel value="#{jogoBean.jogo.versao}" for="input1" />
 				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
 					required="true" />
 				<p:message for="input1" />
-
+				
 				<f:facet name="footer">
-					<p:commandButton value="Salvar" action="#{jogoBean.save()}"
+					<p:commandButton value="Atualizar" action="#{jogoBean.save()}"
 						update="pg" process="@this">
 						<p:resetInput target="pg" />
 					</p:commandButton>

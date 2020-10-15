@@ -26,11 +26,22 @@ public class JogoBean {
 	private String inputvSistema;
 	
 	@Inject
-	private List<Jogos> jogos; 
+	private List<Jogos> jogos;
+	
+	@Inject
+	List<Jogos> jogoAtualizar;
 	
 	@Inject
 	private JogosDAO gerenciar;
 
+
+	public List<Jogos> getJogoAtualizar() {
+		return jogoAtualizar;
+	}
+
+	public void setJogoAtualizar(List<Jogos> jogoAtualizar) {
+		this.jogoAtualizar = jogoAtualizar;
+	}
 
 	public Jogos getJogo() {
 		return jogo;
@@ -101,6 +112,21 @@ public class JogoBean {
 		jogo = new Jogos();
 		gerenciar = new JogosDAO();
 		setJogos(gerenciar.listar());
+	}
+	
+	public void inicioEditar(String inputnJogo, String inputrID, String inputvSistema) {
+		
+		jogo = new Jogos();
+		jogo.setNomeJogo(inputnJogo);
+		jogo.setRegistroID(inputrID);
+		jogo.setVersao(inputvSistema);
+		
+	}
+	
+	public void direcaoEditar(int id) {
+		
+		setJogoAtualizar(gerenciar.direcaoAtualizar(id));
+		
 	}
 	
 	public void editar(int id) {

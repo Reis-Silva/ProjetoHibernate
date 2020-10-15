@@ -12,7 +12,7 @@
 	<title>Banco de dados - Hibernate</title>
 </h:head>
 
-<h:body>
+<h:body id="body">
 	<h:form id="form">
 
 		<div align="center">
@@ -61,21 +61,74 @@
 					<p:commandButton value="Deletar"
 						actionListener="#{jogoBean.remove(j.id)}" process="tablejogos"
 						update="form " />
-					<p:commandButton value="Editar"
-						actionListener="#{jogoBean.editar(j.id)}" process="tablejogos"
-						update="form " />
+						
+					<p:remoteCommand name="rc" action="#{jogoBean.direcaoEditar(j.id)}" autoRun="true"/>
+					<p:button value="Editar"
+						outcome="editar.xhtml?parametro=#{j.id}" includeViewParams="#{j.nomeJogo}"  onclick="rc()"/>
+					
+				</p:column>
+
+				<p:column style="width:50px;  font-size: 10pt;">
+					<f:facet name="header">
+						<p:outputLabel value="Detalhes" />
+					</f:facet>
+					<p:commandButton value="Teste" id="btnView"
+						update=":details tablejogos" oncomplete="PF('details').show();">
+						<f:setPropertyActionListener value="#{j}"
+							target="#{jogoBean.jogo}" />
+						<f:actionListener binding="#{jogoBean.inicioEditar(j.nomeJogo,j.registroID,j.versao)}"></f:actionListener>
+
+					</p:commandButton>
+					<p:tooltip position="top" for="btnView" value="Visualizar" />
 				</p:column>
 
 				<f:facet name="footer">
 					<p:commandButton value="Atualizar Buscar" action="#{jogoBean.buscar()}"
 						update="@form" />
-
+	
 				</f:facet>
 			</p:dataTable>
-
+			
 		</p:fieldset>
 
 	</h:form>
+
+	<p:dialog widgetVar="details" id="details" showEffect="fade"
+		hideEffect="fade" styleClass="modal-dialog"
+		header="Detalhes de #{jogoBean.jogo.nomeJogo}" appendTo="@(body)"
+		closable="true" resizable="false" responsive="true" modal="true"
+		height="auto">
+		<h:form id="formDetails">
+			<p:panelGrid columns="3">
+
+				<p:outputLabel value="Nome atual"/>
+				<p:outputLabel value="Nome para substituição"/>
+				<p:outputLabel value="Mensagem"/>
+				
+				<p:outputLabel value="#{jogoBean.jogo.nomeJogo}" for="nj" />
+				<p:inputText id="nj" required="true" requiredMessage="O nome é obrigatório" 
+				value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui" disabled="false"/>
+				<p:message for="nj" />
+
+				<p:outputLabel for="console" value="#{jogoBean.jogo.registroID}" />
+				<p:selectOneRadio id="console" value="#{jogoBean.inputrID}"
+					unselectable="true" required="true">
+					<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</p:selectOneRadio>
+				<p:message for="console" />
+
+				<p:outputLabel value="#{jogoBean.jogo.versao}" for="input1" />
+				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
+					required="true" />				
+				<p:message for="input1" />
+				
+				
+			</p:panelGrid>
+
+		</h:form>
+	</p:dialog>
 
 </h:body>
 

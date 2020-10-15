@@ -73,6 +73,17 @@ public class JogosDAO {
 		}
 		
 		
+		public List<Jogos> direcaoAtualizar(int id) {
+			
+			entityManager.getTransaction().begin();
+			Query consulta = entityManager.createQuery("select * from Jogos jogo where id="+id);
+			List<Jogos> listaAtualizar = consulta.getResultList();
+			entityManager.getTransaction().commit();
+			
+			return listaAtualizar;
+			
+		}
+		
 		public void atualizar(final int id, String inputnJogo, String inputrID, String inputvSistema) {
 			
 			Jogos jogo = entityManager.find(Jogos.class, id);
