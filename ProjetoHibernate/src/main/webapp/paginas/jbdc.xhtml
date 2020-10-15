@@ -27,8 +27,10 @@
 			<p:menuitem value="BANCO DE DADOS" url="jbdc.xhtml" />
 			<p:menuitem value="CADASTRO" url="cadastro.xhtml" />
 		</p:menubar>
-
-		<p:fieldset>
+		
+		<br/>
+		
+		<p:fieldset legend="Banco de dados de Jogos">
 
 			<p:dataTable id="tablejogos" value="#{jogoBean.jogos}" var="j"
 				border="1" width="800px" style="width: auto;" paginator="true"
@@ -41,31 +43,30 @@
            Tabela de Jogos
         </f:facet>
 
-				<p:column headerText="Id">
-					<h:outputLabel value="#{j.id}" />
-				</p:column>
-
-				<p:column sortBy="#{j.nomeJogo}" headerText="Nome do Jogo"
+				<p:column style="width:200px;  font-size: 14pt; text-align: center;" sortBy="#{j.nomeJogo}" headerText="Nome do Jogo"
 					filterBy="#{v.state}" filterMatchMode="contains">
 					<h:outputLabel value="#{j.nomeJogo}" />
 				</p:column>
 
-				<p:column sortBy="#{j.registroID}" headerText="Console">
+				<p:column style="width:200px;  font-size: 14pt; text-align: center;" sortBy="#{j.registroID}" headerText="Console">
 					<h:outputLabel value="#{j.registroID}" />
 				</p:column>
 
-				<p:column headerText="Versão">
+				<p:column style="width:200px;  font-size: 14pt; text-align: center;" headerText="Versão">
 					<h:outputLabel value="#{j.versao}" />
 				</p:column>
 
-				<p:column style="width:50px;  font-size: 10pt;">
+				<p:column style="width:100px;  font-size: 10pt; text-align: center;">
+				
 					<f:facet name="header">
-						<p:outputLabel value="Detalhes" />
+						<p:outputLabel value="Funções" />
 					</f:facet>
-					<p:commandButton value="Teste" id="btnView"
+					<p:commandButton value="Atualizar" id="btnView"
 						update=":details tablejogos" oncomplete="PF('details').show();"
 						actionListener="#{jogoBean.inicioEditar(j.id,j.nomeJogo,j.registroID,j.versao)}"/>
-					<p:tooltip position="top" for="btnView" value="Visualizar" />
+						
+					<br/>
+					<hr></hr>
 					<p:commandButton value="Deletar"
 						actionListener="#{jogoBean.remove(j.id)}" process="tablejogos"
 						update="form " />
@@ -73,7 +74,7 @@
 				</p:column>
 
 				<f:facet name="footer">
-					<p:commandButton value="Atualizar Buscar"
+					<p:commandButton value="Atualizar Tabela"
 						action="#{jogoBean.buscar()}" update="@form" />
 
 				</f:facet>
