@@ -122,15 +122,16 @@
 					required="true" />
 				<p:message for="input1" />
 			</p:panelGrid>
+				<br/>
 				<div>
 					<!-- Confirm Dialog -->
 					<p:commandButton value="Atualizar"
-						actionListener="#{jogoBean.editar(jogoBean.jogo.id,jogoBean.inputnJogo,jogoBean.jogo.registroID,jogoBean.jogo.versao)}"
-						update="growl" resetValues="true">
+						actionListener="#{jogoBean.editar(jogoBean.jogo.id,jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
+						update="growl :form:tablejogos" resetValues="true">
 						<p:confirm header="Confirmation"
 							message="Tem certeza que deseja alterar?"
 							icon="pi pi-exclamation-triangle" />
-						<p:resetInput target="pg" />
+						<p:resetInput target="details" />
 					</p:commandButton>
 
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -141,7 +142,7 @@
 					</p:confirmDialog>
 
 				</div>
-				<p:commandButton value="Cancelar" actionListener="" oncomplete=""/>
+				<p:commandButton value="Cancelar" actionListener=" " oncomplete=" " />
 		</h:form>
 	</p:dialog>
 </div>

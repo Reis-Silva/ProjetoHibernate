@@ -85,7 +85,7 @@ public class JogosDAO {
 			jogo.setRegistroID(inputrID);
 			jogo.setVersao(inputvSistema);
 			entityManager.getTransaction().commit();
-			
+			entityManagerFactory.close();
 			
 		}
 	
