@@ -2,6 +2,11 @@
 
 Projeto Hibernate-JPA Simplificado para cadastro de jogos de Videogame.
 
-### Construído utilidades CRUD(Create, Read, Update e Drop).
+### Construído utilidades CRUD (Create, Read, Update e Drop).
 
-#### OBS: Em finalização.
+## Dados de construção do projeto:
+
+
+#### OBS: Dados de construção do projeto à serem catalogados.
+
+#### OBS2: Em finalização.
