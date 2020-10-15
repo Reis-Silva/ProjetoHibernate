@@ -32,9 +32,9 @@
 
 		<p:growl id="growl" showDetail="true" sticky="true" />
 
-		<p:fieldset>
-			<p:panel>
-				<h:panelGrid id="pg" columns="3" border="1" layout="flex">
+		
+			<p:panel id="pg">
+				<h:panelGrid  columns="3" border="1" layout="flex">
 					<f:facet name="header">
            		Cadastrar no banco de Dados
         	</f:facet>
@@ -64,7 +64,7 @@
 									<!-- Confirm Dialog -->
 							<p:commandButton value="Cadastrar"
 								action="#{jogoBean.save(jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
-								update="growl pg" resetValues="true">
+								update="growl pg form" resetValues="true">
 								<p:confirm header="Confirmation"
 									message="Os dados estão CORRETOS?"
 									icon="pi pi-exclamation-triangle" />
@@ -84,8 +84,6 @@
 					
 				</h:panelGrid>
 			</p:panel>
-
-		</p:fieldset>
 	</h:form>
 
 

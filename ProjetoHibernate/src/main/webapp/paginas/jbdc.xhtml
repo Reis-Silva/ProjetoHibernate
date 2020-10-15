@@ -121,10 +121,13 @@
 				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
 					required="true" />
 				<p:message for="input1" />
+				
 			</p:panelGrid>
-				<br/>
-				<div>
-					<!-- Confirm Dialog -->
+			
+			
+			<br/>
+			<br/>
+			<!-- Confirm Dialog -->
 					<p:commandButton value="Atualizar"
 						actionListener="#{jogoBean.editar(jogoBean.jogo.id,jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
 						update="growl :form:tablejogos" resetValues="true">
@@ -133,16 +136,19 @@
 							icon="pi pi-exclamation-triangle" />
 						<p:resetInput target="details" />
 					</p:commandButton>
-
+					
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 						<p:commandButton value="SIM" type="button"
 							styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
 						<p:commandButton value="NÃO" type="button"
 							styleClass="ui-confirmdialog-no " icon="pi pi-times" />
 					</p:confirmDialog>
-
-				</div>
+				
+				<br/>
+				<br/>
 				<p:commandButton value="Cancelar" actionListener=" " oncomplete=" " />
+			
+			
 		</h:form>
 	</p:dialog>
 </div>
