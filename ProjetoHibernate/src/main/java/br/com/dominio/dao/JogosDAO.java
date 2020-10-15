@@ -8,7 +8,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import br.com.dominio.entidade.Jogos;
-import br.com.dominio.modelcontrol.JogoBean;
 
 public class JogosDAO {
 	
@@ -20,6 +19,7 @@ public class JogosDAO {
 			entityManager = getEntityManager();
 		} 
 		
+		//Iniciando parâmetros de banco de dados
 		public EntityManager getEntityManager() {
 			entityManagerFactory = Persistence.createEntityManagerFactory("jogosgenericos");
 			if (entityManager == null) {
@@ -28,14 +28,16 @@ public class JogosDAO {
 			return entityManager;
 		}
 		
-		public void salvar(Jogos j) {	
+		//Salvar no banco de dados
+		public void salvar(Jogos jogo) {	
 				entityManager.getTransaction().begin();
-				entityManager.merge(j);
+				entityManager.merge(jogo);
 				entityManager.getTransaction().commit();
 				entityManagerFactory.close();
 		}
 		
-			
+	
+		//Remover do banco de dados
 		public Jogos getById(final int id) {
 	         return entityManager.find(Jogos.class, id);
 	       }
@@ -60,6 +62,8 @@ public class JogosDAO {
 			entityManagerFactory.close();
 		}
 		
+		
+		//Buscar no banco de dados
 		@SuppressWarnings("unchecked")
 		public List<Jogos> listar(){
 			
@@ -68,22 +72,11 @@ public class JogosDAO {
 			List<Jogos> lista = consulta.getResultList();
 			entityManager.getTransaction().commit();
 			
-			
 			return lista;
 		}
 		
 		
-		public List<Jogos> direcaoAtualizar(int id) {
-			
-			entityManager.getTransaction().begin();
-			Query consulta = entityManager.createQuery("select * from Jogos jogo where id="+id);
-			List<Jogos> listaAtualizar = consulta.getResultList();
-			entityManager.getTransaction().commit();
-			
-			return listaAtualizar;
-			
-		}
-		
+		//Atualizar no banco de dados
 		public void atualizar(final int id, String inputnJogo, String inputrID, String inputvSistema) {
 			
 			Jogos jogo = entityManager.find(Jogos.class, id);
