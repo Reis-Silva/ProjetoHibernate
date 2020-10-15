@@ -25,49 +25,77 @@
 	</p:menubar>
 
 	<br />
-	
-	<p:messages autoUpdate="true" id="msg"/>
-	
+
+	<p:messages autoUpdate="true" id="msg" />
+
 	<h:form id="form">
-		
+
+		<p:growl id="growl" showDetail="true" sticky="true" />
 
 		<p:fieldset>
-
-			<h:panelGrid id="pg" columns="3" border="1" layout="flex">
-				<f:facet name="header">
+			<p:panel>
+				<h:panelGrid id="pg" columns="3" border="1" layout="flex">
+					<f:facet name="header">
            		Cadastrar no banco de Dados
         	</f:facet>
 
-				<p:outputLabel value="Nome do Jogo" for="nj" />
-				<p:inputText id="nj" required="true" requiredMessage="O nome é obrigatório" 
-				value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui"/>
-				<p:message for="nj" />
+					<p:outputLabel value="Nome do Jogo" for="nj" />
+					<p:inputText id="nj" required="true"
+						requiredMessage="O nome é obrigatório"
+						value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui" />
+					<p:message for="nj" />
 
-				<p:outputLabel for="console" value="Console:" />
-				<p:selectOneRadio id="console" value="#{jogoBean.inputrID}"
-					unselectable="true" required="true">
-					<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-					<f:selectItem itemLabel="PS4" itemValue="PS4" />
-					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-				</p:selectOneRadio>
-				<p:message for="console" />
+					<p:outputLabel for="console" value="Console:" />
+					<p:selectOneRadio id="console" value="#{jogoBean.inputrID}"
+						unselectable="true" required="true">
+						<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+						<f:selectItem itemLabel="PS4" itemValue="PS4" />
+						<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+					</p:selectOneRadio>
+					<p:message for="console" />
 
-				<p:outputLabel value="Versão do Jogo" for="input1" />
-				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
-					required="true" />
-				<p:message for="input1" />
+					<p:outputLabel value="Versão do Jogo" for="input1" />
+					<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
+						required="true" />
+					<p:message for="input1" />
 
-				<f:facet name="footer">
-					<p:commandButton value="Salvar" action="#{jogoBean.save(jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
-						update="pg">
-						<p:resetInput target="pg" />
-					</p:commandButton>
+					<f:facet name="footer">
 
-				</f:facet>
-			</h:panelGrid>
+
+					</f:facet>
+				</h:panelGrid>
+
+			</p:panel>
+			
+			<!-- Confirm Dialog -->
+			
+		<div>
+
+			<p:commandButton value="Cadastrar"
+				action="#{jogoBean.save(jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}" update="growl">
+				<p:confirm header="Confirmation" message="Os dados estão CORRETOS?"
+					icon="pi pi-exclamation-triangle" />
+			</p:commandButton>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="SIM" type="button"
+					styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+				<p:commandButton value="NÃO" type="button"
+					styleClass="ui-confirmdialog-no " icon="pi pi-times" />
+			</p:confirmDialog>
+		
+		
+		</div>
+
+
 		</p:fieldset>
 
 	</h:form>
+
+
+
+
+
 
 </h:body>
 
