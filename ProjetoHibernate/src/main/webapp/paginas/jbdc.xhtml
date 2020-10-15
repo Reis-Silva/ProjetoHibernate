@@ -96,7 +96,7 @@
 		height="auto" style="width:300px;  font-size: 14pt; text-align: center;">
 		<h:form id="formDetails">
 			<p:growl id="growl" showDetail="true" sticky="true" />
-			<p:panelGrid columns="3">
+			<h:panelGrid columns="3" border="1" layout="flex">
 				
 				<p:outputLabel value="-" />
 				<p:outputLabel value="Nome Atual" />
@@ -121,9 +121,8 @@
 				<p:outputLabel value="#{jogoBean.jogo.versao}" for="input1" />
 				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
 					required="true" />
-				
-				
-			</p:panelGrid>
+						
+			</h:panelGrid>
 			
 			
 			<br/>
