@@ -13,6 +13,9 @@
 </h:head>
 
 <h:body id="body">
+
+<!-- Tabela de banco de dados -->
+
 	<h:form id="form">
 
 		<div align="center">
@@ -25,9 +28,7 @@
 			<p:menuitem value="CADASTRO" url="cadastro.xhtml" />
 		</p:menubar>
 
-
 		<p:fieldset>
-
 
 			<p:dataTable id="tablejogos" value="#{jogoBean.jogos}" var="j"
 				border="1" width="800px" style="width: auto;" paginator="true"
@@ -57,42 +58,34 @@
 					<h:outputLabel value="#{j.versao}" />
 				</p:column>
 
-				<p:column>
-					<p:commandButton value="Deletar"
-						actionListener="#{jogoBean.remove(j.id)}" process="tablejogos"
-						update="form " />
-						
-					<p:remoteCommand name="rc" action="#{jogoBean.direcaoEditar(j.id)}" autoRun="true"/>
-					<p:button value="Editar"
-						outcome="editar.xhtml?parametro=#{j.id}" includeViewParams="#{j.nomeJogo}"  onclick="rc()"/>
-					
-				</p:column>
-
 				<p:column style="width:50px;  font-size: 10pt;">
 					<f:facet name="header">
 						<p:outputLabel value="Detalhes" />
 					</f:facet>
 					<p:commandButton value="Teste" id="btnView"
-						update=":details tablejogos" oncomplete="PF('details').show();">
-						<f:setPropertyActionListener value="#{j}"
-							target="#{jogoBean.jogo}" />
-						<f:actionListener binding="#{jogoBean.inicioEditar(j.nomeJogo,j.registroID,j.versao)}"></f:actionListener>
-
-					</p:commandButton>
+						update=":details tablejogos" oncomplete="PF('details').show();"
+						actionListener="#{jogoBean.inicioEditar(j.id,j.nomeJogo,j.registroID,j.versao)}"/>
 					<p:tooltip position="top" for="btnView" value="Visualizar" />
+					<p:commandButton value="Deletar"
+						actionListener="#{jogoBean.remove(j.id)}" process="tablejogos"
+						update="form " />
+
 				</p:column>
 
 				<f:facet name="footer">
-					<p:commandButton value="Atualizar Buscar" action="#{jogoBean.buscar()}"
-						update="@form" />
-	
+					<p:commandButton value="Atualizar Buscar"
+						action="#{jogoBean.buscar()}" update="@form" />
+
 				</f:facet>
 			</p:dataTable>
-			
+
 		</p:fieldset>
 
 	</h:form>
 
+<!-- Tabela de Atualização -->
+
+<div align="center">
 	<p:dialog widgetVar="details" id="details" showEffect="fade"
 		hideEffect="fade" styleClass="modal-dialog"
 		header="Detalhes de #{jogoBean.jogo.nomeJogo}" appendTo="@(body)"
@@ -101,13 +94,15 @@
 		<h:form id="formDetails">
 			<p:panelGrid columns="3">
 
-				<p:outputLabel value="Nome atual"/>
-				<p:outputLabel value="Nome para substituição"/>
-				<p:outputLabel value="Mensagem"/>
-				
+				<p:outputLabel value="Nome atual" />
+				<p:outputLabel value="Nome para substituição" />
+				<p:outputLabel value="Mensagem" />
+
 				<p:outputLabel value="#{jogoBean.jogo.nomeJogo}" for="nj" />
-				<p:inputText id="nj" required="true" requiredMessage="O nome é obrigatório" 
-				value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui" disabled="false"/>
+				<p:inputText id="nj" required="true"
+					requiredMessage="O nome é obrigatório"
+					value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui"
+					disabled="false" />
 				<p:message for="nj" />
 
 				<p:outputLabel for="console" value="#{jogoBean.jogo.registroID}" />
@@ -121,14 +116,14 @@
 
 				<p:outputLabel value="#{jogoBean.jogo.versao}" for="input1" />
 				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
-					required="true" />				
+					required="true" />
 				<p:message for="input1" />
-				
-				
 			</p:panelGrid>
-
+			<p:commandButton value="Atualizar" actionListener="#{jogoBean.editar(jogoBean.jogo.id,jogoBean.inputnJogo,jogoBean.jogo.registroID,jogoBean.jogo.versao)}" />
 		</h:form>
 	</p:dialog>
+</div>
+	
 
 </h:body>
 

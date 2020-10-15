@@ -114,9 +114,10 @@ public class JogoBean {
 		setJogos(gerenciar.listar());
 	}
 	
-	public void inicioEditar(String inputnJogo, String inputrID, String inputvSistema) {
+	public void inicioEditar(int id ,String inputnJogo, String inputrID, String inputvSistema) {
 		
 		jogo = new Jogos();
+		jogo.setId(id);
 		jogo.setNomeJogo(inputnJogo);
 		jogo.setRegistroID(inputrID);
 		jogo.setVersao(inputvSistema);
@@ -129,12 +130,11 @@ public class JogoBean {
 		
 	}
 	
-	public void editar(int id) {
+	public void editar(int id, String inputnJogo, String inputrID, String inputvSistema) {
 		
 		gerenciar.atualizar(id, inputnJogo, inputrID, inputvSistema);
 		
 	}
-	
 	
 	@PostConstruct
 	public void init() {
