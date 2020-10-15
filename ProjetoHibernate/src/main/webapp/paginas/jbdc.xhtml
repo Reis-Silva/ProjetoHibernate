@@ -93,21 +93,22 @@
 		hideEffect="fade" styleClass="modal-dialog"
 		header="Detalhes do Jogo: #{jogoBean.jogo.nomeJogo}" appendTo="@(body)"
 		closable="true" resizable="false" responsive="true" modal="true"
-		height="auto">
+		height="auto" style="width:300px;  font-size: 14pt; text-align: center;">
 		<h:form id="formDetails">
 			<p:growl id="growl" showDetail="true" sticky="true" />
 			<p:panelGrid columns="3">
-
-				<p:outputLabel value="Nome atual" />
-				<p:outputLabel value="Nome para substituição" />
-				<p:outputLabel value="Mensagem" />
-
+				
+				<p:outputLabel value="-" />
+				<p:outputLabel value="Nome Atual" />
+				<p:outputLabel value="Nome para Substituição" />
+				
+				<p:outputLabel value="Jogo"/>
 				<p:outputLabel value="#{jogoBean.jogo.nomeJogo}" for="nj" />
 				<p:inputText id="nj" required="true"
 					requiredMessage="O nome é obrigatório"
 					value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui"/>
-				<p:message for="nj" />
-
+				
+				<p:outputLabel value="Console"/>
 				<p:outputLabel for="console" value="#{jogoBean.jogo.registroID}" />
 				<p:selectOneRadio id="console" value="#{jogoBean.inputrID}"
 					unselectable="true" required="true">
@@ -115,12 +116,12 @@
 					<f:selectItem itemLabel="PS4" itemValue="PS4" />
 					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
 				</p:selectOneRadio>
-				<p:message for="console" />
-
+				
+				<p:outputLabel value="Versão"/>
 				<p:outputLabel value="#{jogoBean.jogo.versao}" for="input1" />
 				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
 					required="true" />
-				<p:message for="input1" />
+				
 				
 			</p:panelGrid>
 			
@@ -142,12 +143,7 @@
 							styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
 						<p:commandButton value="NÃO" type="button"
 							styleClass="ui-confirmdialog-no " icon="pi pi-times" />
-					</p:confirmDialog>
-				
-				<br/>
-				<br/>
-				<p:commandButton value="Cancelar" actionListener=" " oncomplete=" " />
-			
+					</p:confirmDialog>		
 			
 		</h:form>
 	</p:dialog>

@@ -79,6 +79,12 @@ public class JogoBean {
 		this.inputvSistema = inputvSistema;
 	}
 	
+	public String fecharSessao(){
+ 
+	      return "index.xhtml";
+
+	}
+	
 	//Função para salvar no banco de dados
 	public void save(String inputnJogo,String inputrID, String inputvSistema) {
 		jogo = new Jogos();
