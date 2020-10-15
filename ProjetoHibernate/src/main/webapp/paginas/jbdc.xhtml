@@ -17,7 +17,7 @@
 <!-- Tabela de banco de dados -->
 
 	<h:form id="form">
-
+	
 		<div align="center">
 			<h1>Cadastro Geral de Jogos de Video Game</h1>
 			<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
@@ -86,13 +86,16 @@
 
 <!-- Tabela de Atualização -->
 
+
+
 <div align="center">
 	<p:dialog widgetVar="details" id="details" showEffect="fade"
 		hideEffect="fade" styleClass="modal-dialog"
-		header="Detalhes de #{jogoBean.jogo.nomeJogo}" appendTo="@(body)"
+		header="Detalhes do Jogo: #{jogoBean.jogo.nomeJogo}" appendTo="@(body)"
 		closable="true" resizable="false" responsive="true" modal="true"
 		height="auto">
 		<h:form id="formDetails">
+			<p:growl id="growl" showDetail="true" sticky="true" />
 			<p:panelGrid columns="3">
 
 				<p:outputLabel value="Nome atual" />
@@ -102,8 +105,7 @@
 				<p:outputLabel value="#{jogoBean.jogo.nomeJogo}" for="nj" />
 				<p:inputText id="nj" required="true"
 					requiredMessage="O nome é obrigatório"
-					value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui"
-					disabled="false" />
+					value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui"/>
 				<p:message for="nj" />
 
 				<p:outputLabel for="console" value="#{jogoBean.jogo.registroID}" />
@@ -120,7 +122,26 @@
 					required="true" />
 				<p:message for="input1" />
 			</p:panelGrid>
-			<p:commandButton value="Atualizar" actionListener="#{jogoBean.editar(jogoBean.jogo.id,jogoBean.inputnJogo,jogoBean.jogo.registroID,jogoBean.jogo.versao)}" />
+				<div>
+					<!-- Confirm Dialog -->
+					<p:commandButton value="Atualizar"
+						actionListener="#{jogoBean.editar(jogoBean.jogo.id,jogoBean.inputnJogo,jogoBean.jogo.registroID,jogoBean.jogo.versao)}"
+						update="growl" resetValues="true">
+						<p:confirm header="Confirmation"
+							message="Tem certeza que deseja alterar?"
+							icon="pi pi-exclamation-triangle" />
+						<p:resetInput target="pg" />
+					</p:commandButton>
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="SIM" type="button"
+							styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+						<p:commandButton value="NÃO" type="button"
+							styleClass="ui-confirmdialog-no " icon="pi pi-times" />
+					</p:confirmDialog>
+
+				</div>
+				<p:commandButton value="Cancelar" actionListener="" oncomplete=""/>
 		</h:form>
 	</p:dialog>
 </div>

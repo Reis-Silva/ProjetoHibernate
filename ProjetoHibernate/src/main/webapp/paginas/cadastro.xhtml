@@ -60,36 +60,32 @@
 					<p:message for="input1" />
 
 					<f:facet name="footer">
+						<div>
+									<!-- Confirm Dialog -->
+							<p:commandButton value="Cadastrar"
+								action="#{jogoBean.save(jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
+								update="growl pg" resetValues="true">
+								<p:confirm header="Confirmation"
+									message="Os dados estão CORRETOS?"
+									icon="pi pi-exclamation-triangle" />
+									<p:resetInput target="pg" />
+							</p:commandButton>
 
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="fade">
+								<p:commandButton value="SIM" type="button"
+									styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+								<p:commandButton value="NÃO" type="button"
+									styleClass="ui-confirmdialog-no " icon="pi pi-times" />
+							</p:confirmDialog>
 
+						</div>
 					</f:facet>
+					
 				</h:panelGrid>
-
 			</p:panel>
-			
-			<!-- Confirm Dialog -->
-			
-		<div>
-
-			<p:commandButton value="Cadastrar"
-				action="#{jogoBean.save(jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}" update="growl">
-				<p:confirm header="Confirmation" message="Os dados estão CORRETOS?"
-					icon="pi pi-exclamation-triangle" />
-			</p:commandButton>
-
-			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-				<p:commandButton value="SIM" type="button"
-					styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-				<p:commandButton value="NÃO" type="button"
-					styleClass="ui-confirmdialog-no " icon="pi pi-times" />
-			</p:confirmDialog>
-		
-		
-		</div>
-
 
 		</p:fieldset>
-
 	</h:form>
 
 

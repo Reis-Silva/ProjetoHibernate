@@ -78,7 +78,6 @@ public class JogoBean {
 	public void setInputvSistema(String inputvSistema) {
 		this.inputvSistema = inputvSistema;
 	}
-
 	
 	//Função para salvar no banco de dados
 	public void save(String inputnJogo,String inputrID, String inputvSistema) {
@@ -119,6 +118,7 @@ public class JogoBean {
 	public void editar(int id, String inputnJogo, String inputrID, String inputvSistema) {
 		
 		gerenciar.atualizar(id, inputnJogo, inputrID, inputvSistema);
+		buscar();
 		
 	}
 	
