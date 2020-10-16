@@ -32,9 +32,11 @@ Projeto Hibernate-JPA-Mvn Simplificado para cadastro de jogos de Videogame.
 
 [1] - JavaSE-14 (jdk-15.0.0.36)
 
-##### [2] - Dados recorrentes de dependencias encontram-se em: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/pom.xml
+[2] - Servidor Apache Tomcat versão 9.0.39. Link: https://downloads.apache.org/tomcat/tomcat-9/v9.0.39/bin/apache-tomcat-9.0.39-windows-x64.zip
 
-[3] - Conexão com Microsoft SQLServer Management Studio (8 - v18.6). Dados recorrentes de conexão com o banco de dados encontram-se no persistence.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/persistence.xml
+##### [3] - Dados recorrentes de dependencias encontram-se em: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/pom.xml
+
+[4] - Conexão com Microsoft SQLServer Management Studio (8 - v18.6). Dados recorrentes de conexão com o banco de dados encontram-se no persistence.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/persistence.xml
 
 ## Observações:
 
