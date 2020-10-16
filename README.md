@@ -34,7 +34,7 @@ Projeto Hibernate-JPA-Mvn Simplificado para cadastro de jogos de Videogame.
 
 ##### [2] - Dados recorrentes de dependencias encontram-se em: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/pom.xml
 
-[3] - Conexão com Microsoft SQLServer Management Studio (8 - v18.6). Dados recorrentes de conexão com o banco de dados encomtra-se no persistence.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/persistence.xml
+[3] - Conexão com Microsoft SQLServer Management Studio (8 - v18.6). Dados recorrentes de conexão com o banco de dados encontram-se no persistence.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/persistence.xml
 
 ## Observações:
 
