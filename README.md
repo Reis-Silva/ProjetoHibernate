@@ -5,25 +5,25 @@ Projeto Hibernate-JPA-Mvn Simplificado para cadastro de jogos de Videogame.
 ### Visualização das construções de utilidades CRUD (Create, Read, Update e Drop).
 
 
-#### Index:
+#### Index (Menus = [1] - Banco de Dados | [2] - Cadastro):
 <p align="center">
 <img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/index.png">
 ===========================================================================
 </p>
 
-#### Banco de Dados (Funções Deletar e Atualizar):
+#### Menu Banco de Dados (Funções = [1] - Deletar | [2] - Atualizar):
 <p align="center">
 <img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/BancoDeDados.png">
 ===========================================================================
 </p>
 
-#### Atualizar:
+#### Função Atualizar:
 <p align="center">
 <img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/Atualizar.png">
 ===========================================================================
 </p>
 
-#### Cadastro:
+#### Menu Cadastro:
 <p align="center">
 <img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/cadastro.png">
 </p>
@@ -38,9 +38,9 @@ Projeto Hibernate-JPA-Mvn Simplificado para cadastro de jogos de Videogame.
 
 ## Observações:
 
-Obs: No mecanismos de Banco de Dados do SQL Server utiliza-se da "Autenticação do SQL Server".Logon: root e Senha 1234. 
+OBS: No mecanismos de Banco de Dados do SQL Server utiliza-se da "Autenticação do SQL Server".Logon: root e Senha 1234. 
 
-Obs2: Função de criação do banco de dados não está automática apenas para a tabela. 
+OBS2: Função de criação do banco de dados não está automática apenas para a tabela. 
 
 ########################################################################################################################################################################################
 ### []´s
