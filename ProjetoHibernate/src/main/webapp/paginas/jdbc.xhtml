@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Banco de dados - Hibernate</title>
+</h:head>
+
+<h:body id="body">
+
+	<!-- Tabela de banco de dados -->
+
+	<h:form id="form">
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<div align="center">
+			<h1>Cadastro Geral de Jogos de Video Game</h1>
+			<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
+		</div>
+
+		<p:menubar>
+			<p:menuitem value="BANCO DE DADOS" url="jdbc.xhtml" />
+			<p:menuitem value="CADASTRO" url="cadastro.xhtml" />
+		</p:menubar>
+
+		<br />
+
+		<p:fieldset legend="Banco de dados de Jogos">
+
+			<p:dataTable id="tablejogos" value="#{jogoBean.jogos}" var="j"
+				border="1" width="800px" style="width: auto;" paginator="true"
+				rows="15" widgetVar="tJogos"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+				paginatorPosition="bottom" rowsPerPageTemplate="15">
+
+				<f:facet name="header">
+           Tabela de Jogos
+        </f:facet>
+
+				<p:column style="width:200px;  font-size: 14pt; text-align: center;"
+					sortBy="#{j.nomeJogo}" headerText="Nome do Jogo"
+					filterBy="#{v.state}" filterMatchMode="contains">
+					<h:outputLabel value="#{j.nomeJogo}" />
+				</p:column>
+
+				<p:column style="width:200px;  font-size: 14pt; text-align: center;"
+					sortBy="#{j.registroID}" headerText="Console">
+					<h:outputLabel value="#{j.registroID}" />
+				</p:column>
+
+				<p:column style="width:200px;  font-size: 14pt; text-align: center;"
+					headerText="Versão">
+					<h:outputLabel value="#{j.versao}" />
+				</p:column>
+
+				<p:column style="width:100px;  font-size: 10pt; text-align: center;">
+
+					<f:facet name="header">
+						<p:outputLabel value="Funções" />
+					</f:facet>
+					<p:commandButton value="Atualizar" id="btnView"
+						update=":details tablejogos" oncomplete="PF('details').show();"
+						actionListener="#{jogoBean.inicioEditar(j.id,j.nomeJogo,j.registroID,j.versao)}" />
+
+					<br />
+					<hr></hr>
+
+					<!-- Confirm Dialog -->
+					<p:commandButton value="Deletar" process="tablejogos"
+						actionListener="#{jogoBean.remove(j.id)}"
+						update=":form:growl tablejogos">
+						<p:confirm header="Confirmation"
+							message="Tem certeza que deseja deletar?"
+							icon="pi pi-exclamation-triangle" />
+						<p:resetInput target="details" />
+					</p:commandButton>
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="SIM" type="button"
+							styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+						<p:commandButton value="NÃO" type="button"
+							styleClass="ui-confirmdialog-no " icon="pi pi-times" />
+					</p:confirmDialog>
+
+				</p:column>
+
+				<f:facet name="footer">
+					<p:commandButton value="Atualizar Tabela"
+						action="#{jogoBean.buscar()}" update="@form" />
+
+				</f:facet>
+			</p:dataTable>
+
+		</p:fieldset>
+
+	</h:form>
+
+	<!-- Tabela de Atualização -->
+
+
+
+	<div align="center">
+		<p:dialog widgetVar="details" id="details" showEffect="fade"
+			hideEffect="fade" styleClass="modal-dialog"
+			header="Detalhes do Jogo: #{jogoBean.jogo.nomeJogo}"
+			appendTo="@(body)" closable="true" resizable="false"
+			responsive="true" modal="true" height="auto"
+			style="width:300px;  font-size: 14pt; text-align: center;">
+			<h:form id="formDetails">
+				<p:growl id="growl" showDetail="true" sticky="true" />
+				<h:panelGrid columns="3" border="1" layout="flex">
+
+					<p:outputLabel value="-" />
+					<p:outputLabel value="Nome Atual" />
+					<p:outputLabel value="Nome para Substituição" />
+
+					<p:outputLabel value="Jogo" />
+					<p:outputLabel value="#{jogoBean.jogo.nomeJogo}" for="nj" />
+					<p:inputText id="nj" required="true"
+						requiredMessage="O nome é obrigatório"
+						value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui" />
+
+					<p:outputLabel value="Console" />
+					<p:outputLabel for="console" value="#{jogoBean.jogo.registroID}" />
+					<p:selectOneRadio id="console" value="#{jogoBean.inputrID}"
+						unselectable="true" required="true">
+						<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+						<f:selectItem itemLabel="PS4" itemValue="PS4" />
+						<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+					</p:selectOneRadio>
+
+					<p:outputLabel value="Versão" />
+					<p:outputLabel value="#{jogoBean.jogo.versao}" for="input1" />
+					<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
+						required="true" />
+
+				</h:panelGrid>
+
+
+				<br />
+				<br />
+				<!-- Confirm Dialog -->
+				<p:commandButton value="Atualizar"
+					actionListener="#{jogoBean.editar(jogoBean.jogo.id,jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
+					update="growl :form:tablejogos" resetValues="true">
+					<p:confirm header="Confirmation"
+						message="Tem certeza que deseja alterar?"
+						icon="pi pi-exclamation-triangle" />
+					<p:resetInput target="details" />
+				</p:commandButton>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="SIM" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="NÃO" type="button"
+						styleClass="ui-confirmdialog-no " icon="pi pi-times" />
+				</p:confirmDialog>
+
+			</h:form>
+		</p:dialog>
+	</div>
+
+
+</h:body>
+
+
+</html>
