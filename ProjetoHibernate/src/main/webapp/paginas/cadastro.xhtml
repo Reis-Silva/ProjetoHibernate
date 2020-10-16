@@ -7,90 +7,64 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Banco de dados - Hibernate</title>
-</h:head>
 
-<h:body>
 
-	<div align="center">
-		<h1>Cadastro Geral de Jogos de Video Game</h1>
-		<p:graphicImage library="img" name="cadastrogames.jpg" width="500" />
-	</div>
-
-	<p:menubar>
-		<p:menuitem value="BANCO DE DADOS" url="jdbc.xhtml" />
-		<p:menuitem value="CADASTRO" url="cadastro.xhtml" />
-	</p:menubar>
-
-	<br />
 
 	<p:messages autoUpdate="true" id="msg" />
 
-	<h:form id="form">
+	<h:form id="form2">
 
-		<p:growl id="growl" showDetail="true" sticky="true" />
+		<p:growl id="msg" showDetail="true" sticky="true" />
 
-		
-			<p:panel id="pg">
-				<h:panelGrid  columns="3" border="1" layout="flex">
-					<f:facet name="header">
+		<p:panel id="pg">
+			<h:panelGrid columns="3" border="1" layout="flex">
+				<f:facet name="header">
            		Cadastrar no banco de Dados
         	</f:facet>
 
-					<p:outputLabel value="Nome do Jogo" for="nj" />
-					<p:inputText id="nj" required="true"
-						requiredMessage="O nome é obrigatório"
-						value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui" />
-					<p:message for="nj" />
+				<p:outputLabel value="Nome do Jogo" for="nj" />
+				<p:inputText id="nj" required="true"
+					requiredMessage="O nome é obrigatório"
+					value="#{jogoBean.inputnJogo}" placeholder="Insira o nome aqui" />
+				<p:message for="nj" />
 
-					<p:outputLabel for="console" value="Console:" />
-					<p:selectOneRadio id="console" value="#{jogoBean.inputrID}"
-						unselectable="true" required="true">
-						<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-						<f:selectItem itemLabel="PS4" itemValue="PS4" />
-						<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-					</p:selectOneRadio>
-					<p:message for="console" />
+				<p:outputLabel for="console" value="Console:" />
+				<p:selectOneRadio id="console" value="#{jogoBean.inputrID}"
+					unselectable="true" required="true">
+					<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</p:selectOneRadio>
+				<p:message for="console" />
 
-					<p:outputLabel value="Versão do Jogo" for="input1" />
-					<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
-						required="true" />
-					<p:message for="input1" />
+				<p:outputLabel value="Versão do Jogo" for="input1" />
+				<p:inputNumber id="input1" value="#{jogoBean.inputvSistema}"
+					required="true" />
+				<p:message for="input1" />
 
-					<f:facet name="footer">
-						<div>
-									<!-- Confirm Dialog -->
-							<p:commandButton value="Cadastrar"
-								action="#{jogoBean.save(jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
-								update="growl pg form" resetValues="true">
-								<p:confirm header="Confirmation"
-									message="Os dados estão CORRETOS?"
-									icon="pi pi-exclamation-triangle" />
-									<p:resetInput target="pg" />
-							</p:commandButton>
+				<f:facet name="footer">
+					<div>
+						<!-- Confirm Dialog -->
+						<p:commandButton value="Cadastrar"
+							action="#{jogoBean.save(jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
+							update="form:tablejogos">
+							<p:confirm header="Confirmation"
+								message="Os dados estão CORRETOS?"
+								icon="pi pi-exclamation-triangle" />
+						</p:commandButton>
 
-							<p:confirmDialog global="true" showEffect="fade"
-								hideEffect="fade">
-								<p:commandButton value="SIM" type="button"
-									styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-								<p:commandButton value="NÃO" type="button"
-									styleClass="ui-confirmdialog-no " icon="pi pi-times" />
-							</p:confirmDialog>
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+							<p:commandButton value="SIM" type="button"
+								styleClass="ui-confirmdialog-yes" icon="pi pi-check" update="form2" />
+							<p:commandButton value="NÃO" type="button"
+								styleClass="ui-confirmdialog-no " icon="pi pi-times" />
+						</p:confirmDialog>
 
-						</div>
-					</f:facet>
-					
-				</h:panelGrid>
-			</p:panel>
+					</div>
+				</f:facet>
+
+			</h:panelGrid>
+		</p:panel>
 	</h:form>
-
-
-
-
-
-
-</h:body>
-
 </html>
+
