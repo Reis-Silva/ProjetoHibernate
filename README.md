@@ -1,42 +1,24 @@
-# ProjetoHibernate
-
-Projeto Hibernate-JPA-Mvn Simplificado para cadastro de jogos de Videogame.
-
-### Visualização das construções de utilidades CRUD (Create, Read, Update e Drop).
+# Projeto Hibernate-JPA-Maven
 
 
-#### Index (Menus = [1] - Banco de Dados | [2] - Cadastro):
-<p align="center">
-<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/index.png">
-===========================================================================
-</p>
+ Projeto simplificado construído para cadastro de jogos de Videogame através das combinações "Hibernate-JPA-Maven" com o banco de dados Microsoft SQLserver.
 
-#### Menu Banco de Dados (Funções = [1] - Deletar | [2] - Atualizar):
-<p align="center">
-<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/BancoDeDados.png">
-===========================================================================
-</p>
 
-#### Função Atualizar:
-<p align="center">
-<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/Atualizar.png">
-===========================================================================
-</p>
+## Features
 
-#### Menu Cadastro:
-<p align="center">
-<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/cadastro.png">
-</p>
+- Suporte no JavaSE-1.8 em diante podendo ser utilizado o jdk nas versões `11.x, 12.x, 13.x, 14.x, 15.x`.
 
-## Dados de construção do projeto:
+- Suporte no Servidor Apache Tomcat versões `7.x, 8.x, 9.x`, aconselhável a versão `9.x` - Link: https://downloads.apache.org/tomcat/tomcat-9/v9.0.39/bin/apache-tomcat-9.0.39-windows-x64.zip
 
-[1] - JavaSE-14 (jdk-15.0.0.36)
+- Dados recorrentes de dependencias do projeto podem ser utilizadas de acordo como está definido no Link do pom.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/pom.xml desde de que esteja dentro das versões do JavaSE.
 
-[2] - Servidor Apache Tomcat versão 9.0.39. Link: https://downloads.apache.org/tomcat/tomcat-9/v9.0.39/bin/apache-tomcat-9.0.39-windows-x64.zip
+- Conexão com Microsoft SQLServer Management Studio (8 - v18.6) contendo o SQL Server 15, no entanto pode ser utilizado em outras versões. Dados recorrentes de conexão com o banco de dados encontram-se no persistence.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/persistence.xml
 
-##### [3] - Dados recorrentes de dependencias encontram-se em: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/pom.xml
 
-[4] - Conexão com Microsoft SQLServer Management Studio (8 - v18.6). Dados recorrentes de conexão com o banco de dados encontram-se no persistence.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/persistence.xml
+## Possíveis Erros
+
+ - Nas configurações do "SQL Server Configuration Manager/Configurações de Rede do SQL Server/Protocolos para o servidor", verificar se a opção do protocolo está ativa e em casos de erro referente a firewall, ir para a aba Endereço IP, selecionar IP4 e mudar o endereço IP para `194.100.1.100`. em `IPAll` verificar se a porta está como `1433` e as portas dinamicas como 0 ou 55629. Reinicie todas os processos da conexão do SQL server pela aba `serviços/abrir serviços` do Gerenciador de Tarefas. 
+
 
 ## Observações:
 
