@@ -47,10 +47,11 @@
 						<!-- Confirm Dialog -->
 						<p:commandButton value="Cadastrar"
 							action="#{jogoBean.save(jogoBean.inputnJogo,jogoBean.inputrID,jogoBean.inputvSistema)}"
-							update="form:tablejogos">
+							update="@form form:tablejogos form2:pg nj">
 							<p:confirm header="Confirmation"
 								message="Os dados estão CORRETOS?"
 								icon="pi pi-exclamation-triangle" />
+								<p:resetInput target="nj" />
 						</p:commandButton>
 
 						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
