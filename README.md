@@ -10,14 +10,14 @@
 
 - Suporte no Servidor Apache Tomcat versões `7.x, 8.x, 9.x`, aconselhável a versão `9.x` - Link: https://downloads.apache.org/tomcat/tomcat-9/v9.0.39/bin/apache-tomcat-9.0.39-windows-x64.zip
 
-- Dados recorrentes de dependencias do projeto podem ser utilizadas de acordo como está definido no Link do pom.xml: `https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/pom.xml` desde de que esteja dentro das versões do JavaSE.
+- Dados recorrentes de dependencias do projeto podem ser utilizadas de acordo como está definido no Link do pom.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/pom.xml desde de que esteja dentro das versões do JavaSE.
 
 - Conexão com Microsoft SQLServer Management Studio (8 - v18.6) contendo o SQL Server 15, no entanto pode ser utilizado em outras versões. Dados recorrentes de conexão com o banco de dados encontram-se no persistence.xml: https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/persistence.xml
 
 
-## Docker
+## Possíveis Erros
 
-
+ - Nas configurações do "SQL Server Configuration Manager/Configurações de Rede do SQL Server/Protocolos para o servidor", verificar se a opção do protocolo está ativa e em casos de erro referente a firewall, ir para a aba Endereço IP, selecionar IP4 e mudar o endereço IP para `194.100.1.100`. em `IPAll` verificar se a porta está como `1433` e as portas dinamicas como 0 ou 55629. Reinicie todas os processos da conexão do SQL server pela aba `serviços/abrir serviços` do Gerenciador de Tarefas. 
 
 
 ## Observações:
