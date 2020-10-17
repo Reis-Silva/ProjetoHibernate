@@ -17,7 +17,19 @@
 
 ## Possíveis Erros
 
- - Nas configurações do "SQL Server Configuration Manager/Configurações de Rede do SQL Server/Protocolos para o servidor", verificar se a opção do protocolo está ativa e em casos de erro referente a firewall, ir para a aba Endereço IP, selecionar IP4 e mudar o endereço IP para `194.100.1.100`. em `IPAll` verificar se a porta está como `1433` e as portas dinamicas como 0 ou 55629. Reinicie todas os processos da conexão do SQL server pela aba `serviços/abrir serviços` do Gerenciador de Tarefas. 
+- Nas configurações do Microsoft SQLServer Management Studio em: `SQL Server Configuration Manager/Configurações de Rede do SQL Server/Protocolos para o servidor"`. Verificar se a opção do protocolo está `Habilitada`.
+ 
+<p align="center">
+<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/ProtocoloHabilitado.png">
+</p>
+ 
+- Em caso de erro referente ao bloqueio efetuado pelo Firewall, ir para a aba Endereço IP, selecionar `IP4` e mudar o endereço IP para `194.100.1.100`, em `IPAll` verificar se a porta está como `1433` e as portas dinamicas como 0 ou 55629. Reinicie todas os processos da conexão do SQL server pela aba `serviços/abrir serviços` do Gerenciador de Tarefas. 
+ 
+ <p align="center">
+<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/IP4_IPAll.png">
+</p>
+ 
+ 
 
 
 ## Observações:
@@ -27,6 +39,8 @@ OBS: No mecanismos de Banco de Dados do SQL Server utiliza-se da "Autenticação
 OBS2: Função de criação do banco de dados não está automática (foi estabelecido a criação obrigatória do "genericbd" no servidor, pode ser mudado) apenas para a tabela.
 
 OBS3: Depois de carregar completo os dados, use as funções "Synchronize Class List" para o arquivo persistence.xml e "Update Project" na opção do Maven.
+
+OBS: Utilizou-se o Eclipse EE.
 
 ########################################################################################################################################################################################
 ### []´s
