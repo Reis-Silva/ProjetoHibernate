@@ -1,34 +1,10 @@
-# ProjetoHibernate
+# Projeto Hibernate-JPA-Maven
 
-Projeto Hibernate-JPA-Mvn Simplificado para cadastro de jogos de Videogame.
-
-### Visualização das construções de utilidades CRUD (Create, Read, Update e Drop).
-
-
-#### Index (Menus = [1] - Banco de Dados | [2] - Cadastro):
 <p align="center">
-<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/index.png">
-===========================================================================
+ Projeto simplificado para cadastro de jogos de Videogame.
 </p>
 
-#### Menu Banco de Dados (Funções = [1] - Deletar | [2] - Atualizar):
-<p align="center">
-<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/BancoDeDados.png">
-===========================================================================
-</p>
-
-#### Função Atualizar:
-<p align="center">
-<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/Atualizar.png">
-===========================================================================
-</p>
-
-#### Menu Cadastro:
-<p align="center">
-<img src="https://github.com/Reis-Silva/ProjetoHibernate/blob/main/ProjetoHibernate/src/main/java/META-INF/resources/img/cadastro.png">
-</p>
-
-## Dados de construção do projeto:
+## Features
 
 [1] - JavaSE-14 (jdk-15.0.0.36)
 
