@@ -34,13 +34,13 @@
 
 ## Observações:
 
-OBS: No mecanismos de Banco de Dados do SQL Server utiliza-se da "Autenticação do SQL Server".Logon: root e Senha 1234. 
+OBS: No mecanismos de Banco de Dados do SQL Server utiliza-se da "Autenticação do SQL Server": `Logon: root e Senha 1234`. 
 
 OBS2: Função de criação do banco de dados não está automática (foi estabelecido a criação obrigatória do "genericbd" no servidor, pode ser mudado) apenas para a tabela.
 
 OBS3: Depois de carregar completo os dados, use as funções "Synchronize Class List" para o arquivo persistence.xml e "Update Project" na opção do Maven.
 
-OBS: Utilizou-se o Eclipse EE.
+OBS: Utilizou-se o Eclipse EE - Version: 2020-09 (4.17.0).
 
 ########################################################################################################################################################################################
 ### []´s
