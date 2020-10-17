@@ -6,7 +6,7 @@
 
 ## Features
 
-- Suporte no JavaSE-1.8 em diante podendo ser utilizado o jdk nas versões `11.x, 12.x, 13.x, 14.x, 15.x`.
+- Suporte no JavaSE-8 em diante podendo ser utilizado o jdk nas versões `11.x, 12.x, 13.x, 14.x, 15.x`.
 
 - Suporte no Servidor Apache Tomcat versões `7.x, 8.x, 9.x`, aconselhável a versão `9.x` - Link: https://downloads.apache.org/tomcat/tomcat-9/v9.0.39/bin/apache-tomcat-9.0.39-windows-x64.zip
 
