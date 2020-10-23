@@ -93,8 +93,7 @@ public class JogoBean {
 		jogo.setRegistroID(inputrID);
 		jogo.setVersao(inputvSistema);
 		gerenciar.salvar(jogo);
-		buscar();
-		
+		buscar();	
 	}
 	
 	public void remove(int id) {
@@ -111,29 +110,23 @@ public class JogoBean {
 	
 	//Função para editar no banco de dados
 	public void inicioEditar(int id ,String inputnJogo, String inputrID, String inputvSistema) {
-		
 		jogo = new Jogos();
 		jogo.setId(id);
 		jogo.setNomeJogo(inputnJogo);
 		jogo.setRegistroID(inputrID);
 		jogo.setVersao(inputvSistema);
-		
 	}
 	
 	
 	public void editar(int id, String inputnJogo, String inputrID, String inputvSistema) {
-		
 		gerenciar.atualizar(id, inputnJogo, inputrID, inputvSistema);
 		buscar();
-		
 	}
 	
 	//Iniciando o sistema
 	@PostConstruct
 	public void init() {
-		
 		buscar();
-		
 	}
 	
 
