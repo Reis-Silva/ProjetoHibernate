@@ -15,11 +15,10 @@ public class JogosDAO {
 		EntityManager entityManager;
 
 		public JogosDAO(){
-			
 			entityManager = getEntityManager();
 		} 
 		
-		//Iniciando parâmetros de banco de dados
+		//Iniciando parâmetros de banco de dados/Padrão Sigleton
 		public EntityManager getEntityManager() {
 			entityManagerFactory = Persistence.createEntityManagerFactory("jogosgenericos");
 			if (entityManager == null) {
@@ -29,11 +28,18 @@ public class JogosDAO {
 		}
 		
 		//Salvar no banco de dados
-		public void salvar(Jogos jogo) {	
+		public void salvar(Jogos jogo) {
+			try {
 				entityManager.getTransaction().begin();
 				entityManager.merge(jogo);
 				entityManager.getTransaction().commit();
 				entityManagerFactory.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				entityManager.getTransaction().rollback();
+			}
+
 		}
 		
 	
@@ -47,19 +53,25 @@ public class JogosDAO {
 	         try {
 	        	 Jogos j = new Jogos();
 	             j = getById(id);
-	            remover(j);
+	             remover(j);
 	         } catch (Exception ex) {
-	            ex.printStackTrace();
+	        	 ex.printStackTrace();
 	         }
 	       }
 		
 		
 		public void remover(Jogos j) {
-			entityManager.getTransaction().begin();
-			j = entityManager.find(Jogos.class, j.getId());
-			entityManager.remove(j);
-			entityManager.getTransaction().commit();
-			entityManagerFactory.close();
+			try {
+				entityManager.getTransaction().begin();
+				j = entityManager.find(Jogos.class, j.getId());
+				entityManager.remove(j);
+				entityManager.getTransaction().commit();
+				entityManagerFactory.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				entityManager.getTransaction().rollback();
+			}
+
 		}
 		
 		
