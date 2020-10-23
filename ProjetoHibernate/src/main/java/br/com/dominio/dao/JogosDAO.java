@@ -31,7 +31,7 @@ public class JogosDAO {
 		public void salvar(Jogos jogo) {
 			try {
 				entityManager.getTransaction().begin();
-				entityManager.merge(jogo);
+				entityManager.persist(jogo);
 				entityManager.getTransaction().commit();
 				entityManagerFactory.close();
 				
